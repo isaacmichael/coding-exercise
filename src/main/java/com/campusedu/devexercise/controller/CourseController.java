@@ -1,5 +1,7 @@
-package com.campusedu.devexercise;
+package com.campusedu.devexercise.controller;
 
+import com.campusedu.devexercise.entity.Course;
+import com.campusedu.devexercise.repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.univocity.parsers.common.record.Record;
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +28,7 @@ public class CourseController {
     CourseRepository service;
 
     @PostMapping("/upload")
-    public String uploadCSV(@RequestParam("file") MultipartFile file) throws Exception {
+    public String uploadData(@RequestParam("file") MultipartFile file) throws Exception {
         List<Course> courseList = new ArrayList<>();
         InputStream inputStream = file.getInputStream();
         CsvParserSettings setting = new CsvParserSettings();

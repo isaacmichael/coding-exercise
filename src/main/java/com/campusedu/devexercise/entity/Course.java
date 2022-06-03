@@ -1,4 +1,5 @@
-package com.campusedu.devexercise;
+package com.campusedu.devexercise.entity;
+
 
 import javax.persistence.*;
 
@@ -8,58 +9,58 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private int id;
 
-    @Column(name="ARC")
+    @Column(name="advising_requisite_code")
     private String advising_requisite_code;
 
-    @Column(name="CLR")
+    @Column(name="core_literature_requirement")
     private String core_literature_requirement;
 
-    @Column(name="CCT")
+    @Column(name="course_catalog_text")
     private String course_catalog_text;
 
-    @Column(name="CC")
-    private Integer course_code;
+    @Column(name="course_code")
+    private int course_code;
 
-    @Column(name="CCN")
-    private Integer course_code_number;
+    @Column(name="course_code_number")
+    private int course_code_number;
 
-    @Column(name="CCP")
+    @Column(name="course_code_prefix")
     private String course_code_prefix;
 
-    @Column(name="CCS")
+    @Column(name="course_code_sanitized")
     private String course_code_sanitized;
 
-    @Column(name="CF")
-    private Integer course_fees;
+    @Column(name="course_fees")
+    private int course_fees;
 
-    @Column(name="CT")
+    @Column(name="course_title")
     private String course_title;
 
-    @Column(name="DCH")
+    @Column(name="default_credit_hours")
     private String default_credit_hours;
 
-    @Column(name="DC")
+    @Column(name="division_code")
     private String division_code;
 
-    @Column(name="FT")
+    @Column(name="fee_type")
     private String fee_type;
 
-    @Column(name="FVC")
-    private Integer fixed_variable_credit;
+    @Column(name="fixed_variable_credit")
+    private int fixed_variable_credit;
 
-    @Column(name="MaxCH")
-    private Integer max_credit_hours;
+    @Column(name="max_credit_hours")
+    private int max_credit_hours;
 
-    @Column(name="MinCH")
-    private Integer min_credit_hourse;
+    @Column(name="min_credit_hourse")
+    private int min_credit_hourse;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
