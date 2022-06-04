@@ -11,9 +11,7 @@ import com.univocity.parsers.tsv.TsvParserSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
@@ -23,10 +21,33 @@ import java.util.ArrayList;
 
 
 @RestController
+@RequestMapping("/courses")
 public class CourseController {
+
+    private final CourseRepository courseRepository;
+
+    public CourseController(CourseRepository courseRepository){
+        this.courseRepository = courseRepository;
+    }
+
+    @GetMapping()
+    public List<Course> getCourses(){
+        Iterable<Course> course = courseRepository.findAll();
+        return (List<Course>) course;
+    }
+
+
+
+
+
+
+
+
+
+
+
     @Autowired
     CourseRepository service;
-
     @PostMapping("/upload")
     public String uploadData(@RequestParam("file") MultipartFile file) throws Exception {
         List<Course> courseList = new ArrayList<>();
@@ -57,7 +78,6 @@ public class CourseController {
         });
         service.saveAll(courseList);
         return "Upload Sucessful!";
-
     }
 
 
