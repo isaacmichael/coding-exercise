@@ -2,16 +2,14 @@ package com.campusedu.devexercise.controller;
 
 import com.campusedu.devexercise.entity.Course;
 import com.campusedu.devexercise.repositories.CourseRepository;
-import com.univocity.parsers.tsv.TsvParser;
-import com.univocity.parsers.tsv.TsvParserSettings;
-import org.springframework.beans.factory.annotation.Autowired;
-
-
-
 
 import com.univocity.parsers.common.record.Record;
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
+import com.univocity.parsers.tsv.TsvParser;
+import com.univocity.parsers.tsv.TsvParserSettings;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,7 +35,7 @@ public class CourseController {
         setting.setHeaderExtractionEnabled(true);
         TsvParser parser = new TsvParser(setting);
         List<Record> parseAllRecords = parser.parseAllRecords(inputStream);
-        parseAllRecords.forEach( record -> {
+        parseAllRecords.forEach(record -> {
             Course course = new Course();
             course.setAdvising_requisite_code(record.getString("advising_requisite_code"));
             course.setCore_literature_requirement(record.getString("core_literature_requirement"));
@@ -54,6 +52,7 @@ public class CourseController {
             course.setFixed_variable_credit(record.getString("fixed_variable_credit"));
             course.setMax_credit_hours(Integer.parseInt(record.getString("max_credit_hours")));
             course.setMin_credit_hourse(Integer.parseInt(record.getString("min_credit_hourse")));
+
             courseList.add(course);
         });
         service.saveAll(courseList);

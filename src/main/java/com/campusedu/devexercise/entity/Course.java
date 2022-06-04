@@ -4,12 +4,12 @@ package com.campusedu.devexercise.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "courses")
+@Table(name = "course_details")
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private int id;
 
     @Column(name="advising_requisite_code")
     private String advising_requisite_code;
@@ -56,12 +56,8 @@ public class Course {
     @Column(name="min_credit_hourse")
     private int min_credit_hourse;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public Course(){
+        super();
     }
 
     public String getAdvising_requisite_code() {

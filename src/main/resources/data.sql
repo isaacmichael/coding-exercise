@@ -1,4 +1,4 @@
-INSERT INTO course (advising_requisite_code,
+INSERT INTO course_details (advising_requisite_code,
 	core_literature_requirement,
 	course_catalog_text,
 	course_code,
