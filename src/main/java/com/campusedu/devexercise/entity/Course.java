@@ -3,7 +3,7 @@ package com.campusedu.devexercise.entity;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name="course_details")
 @Table(name = "course_details")
 public class Course {
     @Id

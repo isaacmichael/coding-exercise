@@ -11,6 +11,8 @@ import com.univocity.parsers.tsv.TsvParserSettings;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -30,18 +32,15 @@ public class CourseController {
         this.courseRepository = courseRepository;
     }
 
-    @GetMapping()
-    public List<Course> getCourses(){
-        Iterable<Course> course = courseRepository.findAll();
+    @GetMapping("/{ccp}")
+    public List<Course> getCourseByCCP(@PathVariable String ccp) {
+        Iterable<Course> course = courseRepository.findByCourse_Code_Prefix(ccp);
         return (List<Course>) course;
     }
 
 
 
-
-
-
-
+        //return (List<Course>) course;
 
 
 
