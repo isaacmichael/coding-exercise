@@ -4,22 +4,17 @@ import com.campusedu.devexercise.entity.Course;
 import com.campusedu.devexercise.repositories.CourseRepository;
 
 import com.univocity.parsers.common.record.Record;
-import com.univocity.parsers.csv.CsvParser;
-import com.univocity.parsers.csv.CsvParserSettings;
 import com.univocity.parsers.tsv.TsvParser;
 import com.univocity.parsers.tsv.TsvParserSettings;
+
 import org.springframework.beans.factory.annotation.Autowired;
-
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
 import java.util.List;
 import java.util.ArrayList;
-
 
 
 @RestController
@@ -32,12 +27,11 @@ public class CourseController {
         this.courseRepository = courseRepository;
     }
 
-
-    @GetMapping()
+    @GetMapping(produces= MediaType.APPLICATION_JSON_VALUE)
     public List<Course> getCourseByCCP(
             @RequestParam(name="ccp", required = false, defaultValue = "1") String ccp,
             @RequestParam(name="ccn", required = false, defaultValue = "1") int ccn) {
-
+        //if the parameters are not entered, the default values will kick in and find every entry
         if(ccp.equals("1") && ccn == 1){
             Iterable<Course> course = courseRepository.findAll();
             return (List<Course>) course;
@@ -51,21 +45,8 @@ public class CourseController {
             Iterable<Course> course = courseRepository.findByCourse_Code_Number_And_Course_code_prefix(ccn, ccp);
             return (List<Course>) course;
         }
-
-
-
-
-
-
-
     }
-
-
-
-
-
-
-
+    //service to upload a TSV file to the database
     @Autowired
     CourseRepository service;
     @PostMapping("/upload")
@@ -99,8 +80,5 @@ public class CourseController {
         service.saveAll(courseList);
         return "Upload Sucessful!";
     }
-
-
-
 }
 

@@ -13,5 +13,5 @@ INSERT INTO course_details (advising_requisite_code,
 	fixed_variable_credit,
 	max_credit_hours,
 	min_credit_hourse)
-VALUES ('dude', 'dude', 'dude', '1', '1', 'dude', 'dude', '1', 'dude', 'dude','dude', 'dude', '1', '1', '1');
+VALUES ('test', 'test', 'test', '1', '1', 'test', 'test', '1', 'test', 'test','test', 'test', '1', '1', '1');
 

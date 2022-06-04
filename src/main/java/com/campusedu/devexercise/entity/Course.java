@@ -1,6 +1,5 @@
 package com.campusedu.devexercise.entity;
 
-
 import javax.persistence.*;
 
 @Entity(name="course_details")
