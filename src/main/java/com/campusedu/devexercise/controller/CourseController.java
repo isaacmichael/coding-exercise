@@ -28,19 +28,40 @@ public class CourseController {
 
     private final CourseRepository courseRepository;
 
-    public CourseController(CourseRepository courseRepository){
+    public CourseController(CourseRepository courseRepository) {
         this.courseRepository = courseRepository;
     }
 
-    @GetMapping("/{ccp}")
-    public List<Course> getCourseByCCP(@PathVariable String ccp) {
-        Iterable<Course> course = courseRepository.findByCourse_Code_Prefix(ccp);
-        return (List<Course>) course;
+
+    @GetMapping()
+    public List<Course> getCourseByCCP(
+            @RequestParam(name="ccp", required = false, defaultValue = "1") String ccp,
+            @RequestParam(name="ccn", required = false, defaultValue = "1") int ccn) {
+
+        if(ccp.equals("1") && ccn == 1){
+            Iterable<Course> course = courseRepository.findAll();
+            return (List<Course>) course;
+        }else if(ccn == 1){
+            Iterable<Course> course = courseRepository.findByCourse_Code_Number(ccn);
+            return (List<Course>) course;
+        }else if(ccp.equals(1)){
+            Iterable<Course> course = courseRepository.findByCourse_Code_Prefix(ccp);
+            return (List<Course>) course;
+        }else{
+            Iterable<Course> course = courseRepository.findByCourse_Code_Number_And_Course_code_prefix(ccn, ccp);
+            return (List<Course>) course;
+        }
+
+
+
+
+
+
+
     }
 
 
 
-        //return (List<Course>) course;
 
 
 
