@@ -1,7 +1,7 @@
 # My Solution and Thinking Process
 
 
-###Oh gosh, I've never used Java Spring before... What the heck is a Bean?
+### Oh gosh, I've never used Java Spring before... What the heck is a Bean?
 - I've made API's in Ruby On Rails and ASP.NET, but never Java Spring
 - Studied for a day on the basics of Java Spring through Codecademy / Watched several videos on how to make a Spring application
 
