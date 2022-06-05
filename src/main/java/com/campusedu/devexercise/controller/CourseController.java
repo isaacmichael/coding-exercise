@@ -29,20 +29,20 @@ public class CourseController {
 
     @GetMapping(produces= MediaType.APPLICATION_JSON_VALUE)
     public List<Course> getCourseByCCP(
-            @RequestParam(name="ccp", required = false, defaultValue = "1") String ccp,
-            @RequestParam(name="ccn", required = false, defaultValue = "1") int ccn) {
+            @RequestParam(name="ccp", required = false, defaultValue = "-5") String ccp,
+            @RequestParam(name="ccn", required = false, defaultValue = "-5") String ccn) {
         //if the parameters are not entered, the default values will kick in and find every entry
-        if(ccp.equals("1") && ccn == 1){
+        if(ccp.equals("-5") && ccn.equals("-5")){
             Iterable<Course> course = courseRepository.findAll();
             return (List<Course>) course;
-        }else if(ccn == 1){
-            Iterable<Course> course = courseRepository.findByCourse_Code_Number(ccn);
+        }else if(ccn.equals("-5")){
+            Iterable<Course> course = courseRepository.findByCourse_Code_Prefix(ccp.toUpperCase());
             return (List<Course>) course;
-        }else if(ccp.equals(1)){
-            Iterable<Course> course = courseRepository.findByCourse_Code_Prefix(ccp);
+        }else if(ccp.equals("-5")){
+            Iterable<Course> course = courseRepository.findByCourse_Code_Number(Integer.parseInt(ccn));
             return (List<Course>) course;
         }else{
-            Iterable<Course> course = courseRepository.findByCourse_Code_Number_And_Course_code_prefix(ccn, ccp);
+            Iterable<Course> course = courseRepository.findByCourse_Code_Number_And_Course_code_prefix(Integer.parseInt(ccn), ccp.toUpperCase());
             return (List<Course>) course;
         }
     }
