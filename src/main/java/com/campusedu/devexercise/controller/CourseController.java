@@ -36,13 +36,13 @@ public class CourseController {
             Iterable<Course> course = courseRepository.findAll();
             return (List<Course>) course;
         }else if(ccn.equals("-5")){
-            Iterable<Course> course = courseRepository.findByCourse_Code_Prefix(ccp.toUpperCase());
+            Iterable<Course> course = courseRepository.findByCourseCodePrefix(ccp.toUpperCase());
             return (List<Course>) course;
         }else if(ccp.equals("-5")){
-            Iterable<Course> course = courseRepository.findByCourse_Code_Number(Integer.parseInt(ccn));
+            Iterable<Course> course = courseRepository.findByCourseCodeNumber(Integer.parseInt(ccn));
             return (List<Course>) course;
         }else{
-            Iterable<Course> course = courseRepository.findByCourse_Code_Number_And_Course_code_prefix(Integer.parseInt(ccn), ccp.toUpperCase());
+            Iterable<Course> course = courseRepository.findByCourseCodeNumberAndCourseCodePrefix(Integer.parseInt(ccn), ccp.toUpperCase());
             return (List<Course>) course;
         }
     }
@@ -63,8 +63,8 @@ public class CourseController {
             course.setCore_literature_requirement(record.getString("core_literature_requirement"));
             course.setCourse_catalog_text(record.getString("course_catalog_text"));
             course.setCourse_code(record.getString("course_code"));
-            course.setCourse_code_number(Integer.parseInt(record.getString("course_code_number")));
-            course.setCourse_code_prefix(record.getString("course_code_prefix"));
+            course.setCourseCodeNumber(Integer.parseInt(record.getString("course_code_number")));
+            course.setCourseCodePrefix(record.getString("course_code_prefix"));
             course.setCourse_code_sanitized(record.getString("course_code_sanitized"));
             course.setCourse_fees(Integer.parseInt(record.getString("course_fees")));
             course.setCourse_title(record.getString("course_title"));

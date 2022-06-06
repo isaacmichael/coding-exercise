@@ -13,19 +13,12 @@ import java.util.List;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Integer> {
 
-    @Transactional
-    @Modifying
-    @Query(value = "SELECT * FROM course_details c WHERE c.course_code_prefix=?1", nativeQuery = true)
-    public List<Course> findByCourse_Code_Prefix(String ccp);
 
-    @Transactional
-    @Modifying
-    @Query(value = "SELECT * FROM course_details c WHERE c.course_code_number=?1", nativeQuery = true)
-    public List<Course> findByCourse_Code_Number(Integer ccn);
+    List<Course> findByCourseCodePrefix(String ccp);
 
-    @Transactional
-    @Modifying
-    @Query(value = "SELECT * FROM course_details c WHERE c.course_code_number=?1 AND c.course_code_prefix=?2", nativeQuery = true)
-    public List<Course> findByCourse_Code_Number_And_Course_code_prefix(Integer ccn, String ccp);
+    List<Course> findByCourseCodeNumber(Integer ccn);
+
+    List<Course> findByCourseCodeNumberAndCourseCodePrefix(Integer ccn, String ccp);
+
 
 }

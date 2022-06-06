@@ -23,10 +23,10 @@ public class Course {
     private String course_code;
 
     @Column(name="course_code_number")
-    private int course_code_number;
+    private int courseCodeNumber;
 
     @Column(name="course_code_prefix")
-    private String course_code_prefix;
+    private String courseCodePrefix;
 
     @Column(name="course_code_sanitized")
     private String course_code_sanitized;
@@ -91,20 +91,20 @@ public class Course {
         this.course_code = course_code;
     }
 
-    public Integer getCourse_code_number() {
-        return course_code_number;
+    public int getCourseCodeNumber() {
+        return courseCodeNumber;
     }
 
-    public void setCourse_code_number(Integer course_code_number) {
-        this.course_code_number = course_code_number;
+    public void setCourseCodeNumber(int courseCodeNumber) {
+        this.courseCodeNumber = courseCodeNumber;
     }
 
-    public String getCourse_code_prefix() {
-        return course_code_prefix;
+    public String getCourseCodePrefix() {
+        return courseCodePrefix;
     }
 
-    public void setCourse_code_prefix(String course_code_prefix) {
-        this.course_code_prefix = course_code_prefix;
+    public void setCourseCodePrefix(String courseCodePrefix) {
+        this.courseCodePrefix = courseCodePrefix;
     }
 
     public String getCourse_code_sanitized() {
@@ -115,11 +115,11 @@ public class Course {
         this.course_code_sanitized = course_code_sanitized;
     }
 
-    public Integer getCourse_fees() {
+    public int getCourse_fees() {
         return course_fees;
     }
 
-    public void setCourse_fees(Integer course_fees) {
+    public void setCourse_fees(int course_fees) {
         this.course_fees = course_fees;
     }
 
@@ -163,19 +163,19 @@ public class Course {
         this.fixed_variable_credit = fixed_variable_credit;
     }
 
-    public Integer getMax_credit_hours() {
+    public int getMax_credit_hours() {
         return max_credit_hours;
     }
 
-    public void setMax_credit_hours(Integer max_credit_hours) {
+    public void setMax_credit_hours(int max_credit_hours) {
         this.max_credit_hours = max_credit_hours;
     }
 
-    public Integer getMin_credit_hourse() {
+    public int getMin_credit_hourse() {
         return min_credit_hourse;
     }
 
-    public void setMin_credit_hourse(Integer min_credit_hourse) {
+    public void setMin_credit_hourse(int min_credit_hourse) {
         this.min_credit_hourse = min_credit_hourse;
     }
 }
